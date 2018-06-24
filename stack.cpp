@@ -14,7 +14,6 @@
 typedef struct Stack {
     data_type *data;
     int top, size;
-    
 } Stack;
 
 Stack* init(int);
@@ -23,19 +22,33 @@ data_type top(Stack*);
 int push(Stack*, data_type);
 int pop(Stack*);
 int empty(Stack*);
-
+void output(Stack*);
 int main(){
     srand(time(0));
-    Stack* s = init(20);
-    for (int i = 0; i < 20; ++i) {
-    int op = rand() % 2, value = rand() % 100;
+    Stack *s = init(20);
+    for (int i = 0; i < 20; i++) {
+        int op = rand() % 2, value = rand() % 100;
         switch (op) {
+            case 0: {
+                printf("push element = %d to stack\n", value);
+                push(s, value);
+                output(s);        
+            } break;
+            case 1: {
+                printf("pop element from stack\n");
+                pop(s);
+                output(s);
+            } break;
+            default:
+                fprintf(stderr, "error operator = %d\n", op);
+                break;
         }
     }
+    clear(s);
 }
 Stack* init(int n) {
     Stack *s = (Stack*)malloc(sizeof(Stack));
-    s->data =  (data_type*)malloc(sizeof(data_type) * n);
+    s->data = (data_type*)malloc(sizeof(data_type) * n);
     s->size = n;
     s->top = -1;
     return s;
@@ -65,4 +78,23 @@ int pop(Stack* s) {
 }
 int empty(Stack* s) {
     return s->top == -1;    
+}
+void output(Stack* s) {
+    printf("[");
+    int index = 0;
+    for (int i = 0; i < s->size; ++i) {
+        if (i <= s->top) {
+            index += printf("%d",s->data[i]);
+            index += printf(",");
+        }else {
+            printf(",");
+        }
+    }
+    printf("]\n");
+    for (int i = 0; i < index-1; ++i) printf(" ");
+    printf("^\n");
+    for (int i = 0; i < index-1; ++i) printf(" ");
+    printf("|\n");
+    for (int i = 0; i < index-2; ++i) printf(" ");
+    printf("top\n");
 }
