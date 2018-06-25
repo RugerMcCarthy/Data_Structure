@@ -23,7 +23,7 @@ int push(Stack*, data_type);
 int pop(Stack*);
 int empty(Stack*);
 void output(Stack*);
-int main(){
+int main() {
     srand(time(0));
     Stack *s = init(20);
     for (int i = 0; i < 20; i++) {
