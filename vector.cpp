@@ -11,8 +11,7 @@
 #include <string.h>
 #define malloc2 my_malloc(size, __FILE__, __func__, __LINE__) 
 
-void* my_malloc(size,const char* file, const char* func, int line)
-{
+void* my_malloc(int size, const char* file, const char* func, int line) {
     void *data = malloc(size);
     if (data == NULL) {
         fprintf(stderr,"[%s : %s : %s] malloc error\n", file, func, line);
