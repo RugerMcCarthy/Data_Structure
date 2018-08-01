@@ -20,6 +20,7 @@ HashTable* init(int size, int (*func)(const char *)) {
     table->cnt = 0;
     table->hash_func = func;
     table->size = size;
+    return table;
 }
 
 int query(HashTable* table, const char *str) {
