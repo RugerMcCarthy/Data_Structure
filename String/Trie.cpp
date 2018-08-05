@@ -1,4 +1,4 @@
-#include <stdio.h> //【18-03班：0805】 关振智 hug@haizeix.com
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
