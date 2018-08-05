@@ -97,3 +97,4 @@ void output(Heap *h) {
     printf("]\n");
     return;
 }
+
