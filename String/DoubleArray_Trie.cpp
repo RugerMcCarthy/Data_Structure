@@ -95,6 +95,7 @@ int get_base(Node *node, DANode *data) {
     while (!flag) {
         flag = 1;
         for (int i = 0; i < BASE; i++) {
+            if (node->next[i] == NULL) continue;
             if (data[base + i].check == 0) continue;
             flag = 0;
             break;
@@ -140,5 +141,6 @@ int main() {
     printf("storage rate : %lf\n", 1.0 * word_cnt / (1.0 * node_cnt * sizeof(Node)));
     printf("Double Array storage rate : %lf\n", 1.0 * word_cnt / (1.0 * sizeof(DANode) * da_cnt));
     #undef INSERT_CNT 
+    system("pause");
     return 0;
 }
